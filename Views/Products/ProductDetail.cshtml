@@ -1,0 +1,65 @@
+﻿@model sellhandproduct.Models.UpdateProductViewModel
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ürün Detayı</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Ürün Detayı</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="data:image/png;base64,@Convert.ToBase64String(@Model.Image)" alt="ürün resmi" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <form method="post" action=""> @*burda action a bir şey yazmasak dahi gönderdiğinde dosyanın adını gönderiyor controller kısmına*@
+                    <div class="form-group"> 
+                        <label for="productId">ID</label>
+                        <input type="text" class="form-control" asp-for="ProductId" readonly> 
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Ürün Adı</label>
+                        <input type="text" class="form-control" asp-for="ProductName">
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Fiyat</label>
+                        <input type="text" class="form-control" asp-for="ProductPrice">
+                    </div>
+                    <div class="form-group">
+                        <label for="productCount">Stok Miktarı</label>
+                        <input type="text" class="form-control" asp-for="ProductCount"> 
+                    </div>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUserId = UserManager.GetUserId(User);
+                        if (Model.SellerId == currentUserId)
+                        {
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        }
+                    }
+                </form>
+                                <form method="post" action="/Basket/Basket"> 
+                         @if (SignInManager.IsSignedIn(User)&&User.IsInRole("User"))
+                            {
+                                     <input type="hidden" name="inputModel.ProductId" value="@Model.ProductId" />
+                                <button type="submit" class="btn btn-primary">Satın Al</button> 
+
+                            }
+                                    </form >
+                </div>
+            </div>
+        </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

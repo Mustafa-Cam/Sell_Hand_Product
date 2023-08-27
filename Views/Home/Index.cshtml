@@ -1,0 +1,101 @@
+﻿@model sellhandproduct.Models.ViewModel.MyViewModel 
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Yapımı Ürünler</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 24px;
+        }
+        .jumbotron {
+            background-image: url('https://placeimg.com/1200/600/any');
+            background-size: cover;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .jumbotron h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+        .jumbotron p {
+            font-size: 20px;
+            max-width: 600px;
+        }
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+
+    <!-- Jumbotron -->
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>El Yapımı Ürünler</h1>
+            <p class="lead">El emeği, göz nuru ürünlerimizle evinize ve sevdiklerinize renk katın!</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Ürünleri Keşfet</a>
+        </div>
+    </div>
+
+  <div class="container">
+    @await Html.PartialAsync("~/Views/Shared/_ProductListPartial.cshtml", Model)
+</div>
+    <!-- Footer -->
+   
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

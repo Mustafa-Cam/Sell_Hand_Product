@@ -1,0 +1,41 @@
+﻿@model sellhandproduct.Models.AddEmployeeViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form Örneği</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Add Employees</h1>
+        <form method="post" action=Add >
+            <div class="form-group">
+                <label for="name">Ad</label>
+                <input type="text" class="form-control" id="name" placeholder="Adınızı girin" asp-for="Name">
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" placeholder="E-Mail adresinizi girin" asp-for="Email">
+            </div>
+            <div class="form-group">
+                <label for="tel">Tel</label>
+                <input type="text" class="form-control" id="tel" placeholder="Telefon numarınızı girin" asp-for="Tel">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS ve jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>*@
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

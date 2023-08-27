@@ -1,0 +1,11 @@
+﻿/* Bu stil, Delete butonunu sağa dayalı yapar */
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* Sağa dayalı hizalama ve aralarında boşluk */
+    align-items: center; /* Dikeyde içeriği ortala */
+}
+
+/* Bu stil, Delete butonunun kendisini düzgün bir şekilde görüntüler */
+.delete-button {
+    margin-left: auto;
+}

@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager 
+@model sellhandproduct.Models.ViewModel.MyViewModel  
+<link rel="stylesheet" href="~/css/myproduct.css" asp-append-version="true"/>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var product in Model.Products) 
+    {
+        <div class="col">
+            <div class="card h-100">
+                <a href="/products/productdetail/@product.Id"> 
+                    <img src="data:image/png;base64,@Convert.ToBase64String(product.ImageData)" class="card-img-top" alt="@product.ImageData">    
+                </a>   
+                @*<img src="@product.ProductImage" class="card-img-top" alt="@product.ProductName">*@
+                <div class="card-body"> 
+                    <h5 class="card-title">@product.ProductName</h5>
+                    <p class="card-text">@product.ProductPrice.ToString("C2")</p>
+                    <p class="card-text">Stok Adedi: @product.ProductCount</p>
+                </div>
+                <div class="card-footer">
+                    @{
+                        // Find the ApplicationUser corresponding to the SellerId
+                        var seller = Model.Users.FirstOrDefault(u => u.Id == product.SellerId);
+                        // Display the seller's name (e.g., first name and last name)
+                        if (seller != null)
+                        {
+                            <span class="text-muted">@($"{seller.FirstName} {seller.LastName}")</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Unknown Seller</span>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.Identity.Name == seller.UserName) 
+                        {
+                            <button class="btn btn-danger delete-button" onclick="deleteProduct('@product.Id')">Delete</button>
+                        }
+                    }
+                    
+
+                    <div class="col">
+                        <!-- ... Ürün kartı içeriği ... -->
+                        <form method="post" asp-controller="Basket" asp-action="AddToBasket">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" class="btn btn-primary buy-button">Satın Al</button>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

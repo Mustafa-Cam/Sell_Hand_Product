@@ -1,0 +1,68 @@
+﻿/* CSS stil dosyanızda veya ilgili Bootstrap sınıflarını belirten stil dosyanızda ekleyebileceğiniz stiller */
+
+
+/* Menü öğeleri arasındaki boşluğu ayarlar */
+.navbar-nav .nav-item {
+    margin-left: 33px;
+    font-size: 16px;
+    border: 2px solid #333; /* Renk kodunu istediğiniz renk ile değiştirebilirsiniz */
+    border-radius: 8px; /* İsteğe bağlı olarak kenar yuvarlatma ekleyebilirsiniz */
+    padding: 10px;
+}
+.navbar-nav .nav-item .nav-link {
+   margin-top:auto;
+}
+.navbar-nav{
+    margin-left:200px;
+}
+
+    /* Menü öğeleri üzerine geldiğinde rengini değiştirir */
+    .navbar-nav .nav-item:hover .nav-link {
+        color: #007bff;
+    }
+
+    /* Seçili menü öğesinin rengini ve arka planını değiştirir */
+    .navbar-nav .nav-item.active .nav-link {
+        color: #fff;
+        background-color: #007bff;
+    }
+
+    /* CSS stil dosyanızda veya ilgili stil bloğunda ekleyebilirsiniz */
+    .navbar-nav .nav-item .nav-link {
+        border-bottom: 2px solid transparent; /* Başlangıçta çizgiyi şeffaf olarak ayarlayın */
+        transition: border-bottom-color 0.3s; /* Geçiş süresi ekleyin */
+    }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            border-bottom-color: #007bff; /* A tagına gelince çizgi rengini mavi yapın */
+        }
+
+        .admin{
+            color:red;
+        }
+
+/* Örnek CSS kodu */
+        footer {
+            
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 10px 0;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            z-index: 9999; /* Gerekirse, diğer öğelerle çakışmaları önlemek için bir z-indeks değeri belirleyin. */
+           margin-top:20px;
+        }
+
+.sepet {
+    font-size: 54px;
+
+}
+.navbar-collapse.d-lg-flex.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

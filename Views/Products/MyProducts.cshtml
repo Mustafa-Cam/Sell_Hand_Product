@@ -1,0 +1,68 @@
+﻿
+
+
+
+@using Microsoft.AspNetCore.Identity
+@using sellhandproduct.Models
+
+@model sellhandproduct.Models.ViewModel.MyViewModel  
+@inject UserManager<IdentityUser> UserManager 
+ 
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ürün Listesi</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="~/css/myproduct.css" asp-append-version="true"/> bu şekilde de kullanabiliriz .cshtml içinde de kullanabiliriz.*@ 
+</head>
+<body>
+    
+
+    
+    
+
+
+   <div class="container">
+
+    @await Html.PartialAsync("~/Views/Shared/_ProductListPartial.cshtml", Model)
+</div>
+
+ @section Scripts { 
+    <script>
+        function deleteProduct(Id) {
+            if (confirm('Bu ürünü silmek istediğinizden emin misiniz?')) {
+                var headers = new Headers();
+        headers.append('RequestVerificationToken', $('[name="__RequestVerificationToken"]').val());
+                // Ürünü silmeye yönelik bir istek gönder
+                fetch(`/Products/Delete/${Id}`, { 
+                    method: 'POST',
+                    headers: headers
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Ürünü başarıyla sildiğinizde yapılacak işlemler
+                    if (data.success) {
+                        location.reload(); // Sayfayı yeniden yükle
+                    } else {
+                        alert('Ürün silinirken bir hata oluştu.');
+                    }
+                });
+            }
+        }
+    </script>
+}
+<!-- Bootstrap JS ve jQuery kütüphaneleri -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script> *@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- Bootstrap JS ve jQuery kütüphaneleri -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script> *@
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
